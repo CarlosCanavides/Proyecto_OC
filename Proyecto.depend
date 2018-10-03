@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1538291742 source:/home/alumno/Proyecto/LinkedList.c
-	<stdio.h>
-
-1538305334 source:/home/alumno/Proyecto/lista.c
-	<stdio.h>
-	<stdlib.h>
-

@@ -14,7 +14,7 @@ TElemento l_recuperar(TLista lista, TPosicion pos);
 int l_size(TLista lista);
 int l_destruir(TLista * lista);
 
-int main(){
+int lista_test(){
 
     int a = 1;
     int b = 2;

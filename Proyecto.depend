@@ -3,3 +3,18 @@
 	<stdio.h>
 	<stdlib.h>
 
+1538881255 source:/home/alumno/Proyecto/lista.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+	"constantes.h"
+
+1538881177 /home/alumno/Proyecto/lista.h
+
+1538874687 /home/alumno/Proyecto/constantes.h
+
+1538881117 source:/home/alumno/Proyecto/planificador.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+

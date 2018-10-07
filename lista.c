@@ -1,18 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#define LST_NO_INI  0
-
-typedef void * TElemento;
-
-struct celda {
-    TElemento elemento;
-    struct celda * celda_anterior;
-    struct celda * celda_siguiente;
-};
-
-typedef struct celda * TPosicion;
-typedef struct celda * TLista;
+#include "lista.h"
+#include "constantes.h"
 
 TLista crear_lista();
 int l_insertar(TLista * lista, TPosicion pos, TElemento elem);

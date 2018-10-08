@@ -34,4 +34,5 @@ int l_size(TLista lista);
 
 int l_destruir(TLista * lista);
 
-#endif LISTA
+
+#endif

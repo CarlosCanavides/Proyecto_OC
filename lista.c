@@ -4,7 +4,6 @@
 #include "constantes.h"
 
 void lista_test(){
-
     int a = 1;
     int b = 2;
     int c = 3;

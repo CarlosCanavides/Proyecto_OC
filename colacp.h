@@ -3,7 +3,6 @@
 
 typedef void * TClave;
 typedef void * TValor;
-
 typedef struct entrada {
     TClave clave;
     TValor valor;
@@ -32,4 +31,5 @@ int cp_size(TColaCP);
 
 int cp_destruir(TColaCP* cola);
 
-#endif COLA_CON_PRIORIDAD
+#endif 
+

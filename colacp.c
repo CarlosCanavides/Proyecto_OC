@@ -5,6 +5,7 @@
 
 #define LOG_2(a) (log10(a)/log10(2))
 
+
 // Metodos de arbol binario completo
 static void intercambiar_entradas(TNodo nodo_uno, TNodo nodo_dos){
     TEntrada temp = nodo_uno->entrada;

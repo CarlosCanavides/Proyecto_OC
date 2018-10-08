@@ -5,9 +5,9 @@
 
 
 static float obtener_distancia(float pos_x1, float pos_y1, float pos_x2, float pos_y2){
-    float dist_x = pow(pos_x1 - pos_x2, 2);
-    float dist_y = pow(pos_y1 - pos_y2, 2);
-    return sqrt(dist_x + dist_y);
+    float dist_x = fabs(pos_x1 - pos_x2);
+    float dist_y = fabs(pos_y1 - pos_y2);
+    return (dist_x + dist_y);
 }
 
 

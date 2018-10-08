@@ -7,6 +7,7 @@
 #include "panel.h"
 #include "lector.h"
 #include "comparadores.h"
+#include "pesadores.h"
 
 
 int main_principal() {
@@ -49,12 +50,10 @@ TLista reducir_horas_manejo(TLista ciudades, Viajante viajante) {
         TColaCP cola = crear_cola_cp(ciudad_mas_cercana);
         TPosicion ini = l_primera(lista);
         while(ini != POS_NULA){
-            TCiudad valor = l_recuperar(lista, ini);
-            float distancia = fabs(valor->pos_x - viajante->pos_x) + fabs(valor->pos_y - viajante->pos_y);
-            TClave clave = &distancia;
+            TCiudad elem = l_recuperar(lista, ini);
             TEntrada nueva_entrada = (TEntrada) malloc(sizeof(TEntrada));
-            nueva_entrada->clave = clave;
-            nueva_entrada->valor = valor;
+            nueva_entrada->clave = pesar_por_distancia_con_viajante(elem,viajante);
+            nueva_entrada->valor = elem;
             cp_insertar(cola, nueva_entrada);
             ini = l_siguiente(lista, ini);
         }

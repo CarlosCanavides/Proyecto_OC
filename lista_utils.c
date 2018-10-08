@@ -2,21 +2,32 @@
 #include "lista_utils.h"
 #include "constantes.h"
 
-TLista ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada)){
+TLista ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*pesador)(TElemento, void* optarg), void*optarg){
     if(lista == NULL){
         return NULL;
     }
     TLista nuevaLista = crear_lista();
     TColaCP cola = crear_cola_cp(comparador);
     TPosicion ini = l_primera(lista);
+    TEntrada entr_temp;
+    TElemento elem_temp;
     while(ini != POS_NULA){
-        TElemento elem = l_recuperar(lista, ini);
-        cp_insertar(cola, elem);
+        entr_temp = (TEntrada) malloc(sizeof(struct entrada));
+        elem_temp = l_recuperar(lista, ini);
+        entr_temp->clave = pesador(elem_temp, optarg);
+        entr_temp->valor = elem_temp;
+        cp_insertar(cola, entr_temp);
         ini = l_siguiente(lista, ini);
     }
+
     while(cp_size(cola) > 0){
-        l_insertar(&nuevaLista, POS_NULA, cp_eliminar(cola));
+        entr_temp = cp_eliminar(cola);
+        elem_temp = entr_temp->valor;
+        free(entr_temp->clave);
+        free(entr_temp);
+        l_insertar(&nuevaLista, POS_NULA, elem_temp);
     }
+
     invertir_lista(&nuevaLista);
     cp_destruir(&cola);
     return nuevaLista;

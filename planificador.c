@@ -13,9 +13,10 @@ int main_principal() {
 
     // Falta la parte de solicitar al usuario el archivo correspondiente
 
-    FILE * archivo_ciudades = abrir_archivo(NULL);
-    Viajante viajante;
+    FILE * archivo_ciudades = abrir_archivo("./Data/viajes");
     TLista ciudades = obtener_ciudades(archivo_ciudades);
+    Viajante viajante = obtener_viajante(archivo_ciudades);
+    cerrar_archivo(archivo_ciudades);
 
     mostrar_menu();
     int inicializacion_por_defecto = 4;

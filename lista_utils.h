@@ -12,4 +12,6 @@ void limpiar_lista(TLista* lista);
 
 void invertir_lista(TLista* lista);
 
+void eliminar_elemento(TLista * lista, TElemento elem);
+
 #endif

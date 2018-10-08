@@ -1,3 +1,5 @@
+#ifndef LISTA
+#define LISTA
 
 typedef void * TElemento;
 
@@ -9,6 +11,8 @@ struct celda {
 
 typedef struct celda * TPosicion;
 typedef struct celda * TLista;
+
+void lista_test();
 
 TLista crear_lista();
 
@@ -29,3 +33,5 @@ TElemento l_recuperar(TLista lista, TPosicion pos);
 int l_size(TLista lista);
 
 int l_destruir(TLista * lista);
+
+#endif LISTA

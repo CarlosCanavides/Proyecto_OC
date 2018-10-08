@@ -1,33 +1,9 @@
 #include<stdlib.h>
 #include<math.h>
-#include"colacp.h"
+#include "colacp.h"
+#include "constantes.h"
 
 #define LOG_2(a) (log10(a)/log10(2))
-
-#define TRUE 1
-#define FALSE 0
-#define CCP_NO_INI 4
-#define POS_NULA NULL
-#define ELE_NULO NULL
-
-typedef void * TClave;
-typedef void * TValor;
-typedef struct entrada {
-    TClave clave;
-    TValor valor;
-} * TEntrada;
-typedef struct nodo {
-    TEntrada entrada;
-    struct nodo * padre;
-    struct nodo * hijo_izquierdo;
-    struct nodo * hijo_derecho;
-} * TNodo;
-typedef struct cola_con_prioridad {
-    unsigned int cantidad_elementos;
-    TNodo raiz;
-    int (*comparador)(TEntrada a, TEntrada b);
-} * TColaCP;
-
 
 // Metodos de arbol binario completo
 static void intercambiar_entradas(TNodo nodo_uno, TNodo nodo_dos){

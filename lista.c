@@ -3,18 +3,7 @@
 #include "lista.h"
 #include "constantes.h"
 
-TLista crear_lista();
-int l_insertar(TLista * lista, TPosicion pos, TElemento elem);
-int l_eliminar(TLista * lista, TPosicion pos);
-TPosicion l_primera(TLista lista);
-TPosicion l_ultima (TLista lista);
-TPosicion l_anterior (TLista lista, TPosicion pos);
-TPosicion l_siguiente(TLista lista, TPosicion pos);
-TElemento l_recuperar(TLista lista, TPosicion pos);
-int l_size(TLista lista);
-int l_destruir(TLista * lista);
-
-int lista_test(){
+void lista_test(){
 
     int a = 1;
     int b = 2;
@@ -61,8 +50,6 @@ int lista_test(){
 
     l_destruir(&listC);
     printf("Size = %i \n",l_size(listC));
-
-    return 0;
 }
 
 struct celda * crear_celda() {

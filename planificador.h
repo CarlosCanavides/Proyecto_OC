@@ -19,11 +19,6 @@ typedef struct viajante {
 
 int main_principal();
 
-
-FILE * abrirArchivo(char * nombre_archivo);
-
-TLista leer_archivo(FILE * archivo);
-
 TLista mostrar_ciudades_ascendentes(TLista ciudades, Viajante viajante);
 
 TLista mostrar_ciudades_descendentes(TLista ciudades, Viajante viajante);

@@ -1,0 +1,2 @@
+** Ver el tema de la lista, cuando se insertan en obtener_ciudad inserto los TCiudad como si fueran TElemento
+   eso nose si esta mal o no, quizas deberia crear un TElemento que apunte a un TCiudad.

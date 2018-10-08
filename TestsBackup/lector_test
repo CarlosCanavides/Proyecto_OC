@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <limits.h>
+#include "lista.h"
+#include "colacp.h"
+#include "lista_utils.h"
+#include "comparadores.h"
+#include "constantes.h"
+#include "lector.h"
+
+
+int main(){
+    char cwd[PATH_MAX];
+    if(getcwd(cwd, sizeof(cwd)) != NULL){
+        printf("Current directory: %s \n", cwd);
+    }
+    else{
+        perror("getwcd() error");
+        return 1;
+    }
+
+    FILE* viajes = abrir_archivo("./Datos/viajes");
+    TLista ciudades = obtener_ciudades(viajes);
+    Viajante viaj = obtener_viajante(viajes);
+    cerrar_archivo(viajes);
+    TCiudad ciudad;
+    ciudad = ((TCiudad)l_recuperar(ciudades, l_primera(ciudades)));
+    printf("Pos x: %f ; pos y: %f \n", ciudad->pos_x, ciudad->pos_y);
+    printf("Viajante: <%f ; %f>", viaj->pos_x, viaj->pos_y);
+    return 0;
+}

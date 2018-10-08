@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <string.h>
 #include "panel.h"
 
 void mostrar_menu() {
@@ -6,6 +8,8 @@ void mostrar_menu() {
     printf(" 1 _ Mostrar ascendente \n");
     printf(" 2 _ Mostrar descendente \n");
     printf(" 3 _ Reducir horas de manejo \n");
+    printf(" 4 _ Salir \n");
+    printf(" Elección : ");
 }
 
 void mostrar_ciudades(TLista ciudades) {
@@ -15,7 +19,9 @@ void mostrar_ciudades(TLista ciudades) {
     int orden = 0;
     do{
         ciudad = l_recuperar(ciudades, posicion_actual);
-        printf(" %i NOMBRE DE LA CIUDAD \n ",orden);
+        char nombre[20];
+        srtcpy(nombre,ciudad->nombre);
+        printf(" %i %s \n ",orden,nombre);
         posicion_actual = l_siguiente(ciudades,posicion_actual);
         orden++;
     } while(posicion_actual!=ultima_posicion);
@@ -32,7 +38,13 @@ void elegir_opcion(int opcion, TLista ciudades, Viajante viajante){
              ciudades_ordenadas = mostrar_ciudades_descendentes(ciudades,viajante);
           }
           else {
-             ciudades_ordenadas = reducir_horas_manejo(ciudades,viajante);
+                if(opcion==4){
+                   ciudades_ordenadas = reducir_horas_manejo(ciudades,viajante);
+                }
+                else {
+                     l_destruir(&ciudades);
+                     exit(0);
+                }
           }
     }
     mostrar_ciudades(ciudades_ordenadas);

@@ -60,8 +60,9 @@ TLista reducir_horas_manejo(TLista ciudades, Viajante viajante) {
         TCiudad ciudad = (cp_eliminar(cola))->valor;
         viajante->pos_x = ciudad->pos_x;
         viajante->pos_y = ciudad->pos_y;
-        l_eliminar(&lista,ciudad);
         l_insertar(&ciudades_ordenadas, POS_NULA, ciudad);
+        TPosicion pos_ciudad = (TPosicion)&ciudad;
+        l_eliminar(&lista,pos_ciudad);
         cp_destruir(&cola);
     }
     invertir_lista(&ciudades_ordenadas);

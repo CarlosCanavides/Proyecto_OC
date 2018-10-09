@@ -46,12 +46,16 @@ TLista duplicar_lista(TLista lista){
     return nuevaLista;
 }
 
-void limpiar_lista(TLista* lista){
-    if(lista != NULL && l_size(*lista) > 0){
-        while(l_size(*lista) > 0){
-            TPosicion ultima = l_ultima(*lista);
-            l_eliminar(lista, ultima);
+void limpiar_lista(TLista * lista){
+    if(lista != NULL){
+        int cantidad_elementos = l_size(*lista);
+        int i = 0;
+        for(i=0; i<cantidad_elementos ; i++){
+            TPosicion pos = l_primera(*lista);
+            TElemento temporal = l_recuperar(*lista,pos);
+            free(temporal);
         }
+        l_destruir(lista);
     }
 }
 
@@ -66,6 +70,19 @@ void invertir_lista(TLista* plista){
             l_insertar(&lista, fin, temp);
             ini = l_siguiente(lista, ini);
             fin = l_anterior(lista, fin);
+        }
+    }
+}
+
+void eliminar_elemento(TLista * lista, TElemento elemento) {
+    if(lista!=NULL && elemento!=NULL){
+        TPosicion ini = *lista;
+        while((ini->elemento!=elemento) && (ini->celda_siguiente!=NULL)){
+            ini = ini->celda_siguiente;
+        }
+        if(ini!=NULL && ini->elemento==elemento){
+            free(elemento);
+            l_eliminar(lista,ini);
         }
     }
 }

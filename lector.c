@@ -38,7 +38,7 @@ TLista obtener_ciudades(FILE * archivo){
     fscanf(archivo,"%*[^\n]\n");  // Salteo la linea del viajante
     while(!feof(archivo)){
         fgets(linea, 100, archivo);
-        nombre_ciudad = (char*) malloc(sizeof(char)*20);
+        nombre_ciudad = (char*) malloc(sizeof(char)*30);
         leer_ciudad(linea, 100, nombre_ciudad, &pos_x, &pos_y);
 
         TCiudad ciudad = (TCiudad) malloc(sizeof(struct ciudad));

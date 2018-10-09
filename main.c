@@ -20,9 +20,14 @@ void imprimir_valor_ciudades(TLista lista){
     }
 }
 
-int main(){
-
-    FILE* archivo = abrir_archivo("./Datos/viajes");
+int main(int argc, const char * arg[]){
+    FILE* archivo;
+    if(argc==2){
+        archivo = abrir_archivo(arg[1]);
+    }
+    else{
+        exit(0);
+    }
     TLista ciudades = obtener_ciudades(archivo);
     Viajante viajante = obtener_viajante(archivo);
     cerrar_archivo(archivo);

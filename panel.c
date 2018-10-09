@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "panel.h"
+#include "lista_utils.h"
 
 void mostrar_menu() {
     printf(" PLANIFICADOR DE VIAJES \n ");
@@ -19,8 +20,8 @@ void mostrar_ciudades(TLista ciudades) {
     int orden = 0;
     do{
         ciudad = l_recuperar(ciudades, posicion_actual);
-        char nombre[20];
-        srtcpy(nombre,ciudad->nombre);
+        char nombre[30];
+        strcpy(nombre,ciudad->nombre);
         printf(" %i %s \n ",orden,nombre);
         posicion_actual = l_siguiente(ciudades,posicion_actual);
         orden++;
@@ -38,11 +39,11 @@ void elegir_opcion(int opcion, TLista ciudades, Viajante viajante){
              ciudades_ordenadas = mostrar_ciudades_descendentes(ciudades,viajante);
           }
           else {
-                if(opcion==4){
+                if(opcion==3){
                    ciudades_ordenadas = reducir_horas_manejo(ciudades,viajante);
                 }
                 else {
-                     l_destruir(&ciudades);
+                     limpiar_lista(&ciudades);
                      exit(0);
                 }
           }

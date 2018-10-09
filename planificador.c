@@ -31,11 +31,11 @@ int main_principal() {
 }
 
 TLista mostrar_ciudades_ascendentes(TLista ciudades, Viajante viajante) {
-    return ordenar_lista(ciudades, ciudad_mas_cercana);
+    return ordenar_lista(ciudades, ciudad_mas_cercana, pesar_por_distancia_con_viajante, viajante);
 }
 
 TLista mostrar_ciudades_descendentes(TLista ciudades, Viajante viajante) {
-    return ordenar_lista(ciudades, ciudad_mas_lejana);
+    return ordenar_lista(ciudades, ciudad_mas_lejana, pesar_por_distancia_con_viajante, viajante);
 }
 
 TLista reducir_horas_manejo(TLista ciudades, Viajante viajante) {
@@ -61,8 +61,7 @@ TLista reducir_horas_manejo(TLista ciudades, Viajante viajante) {
         viajante->pos_x = ciudad->pos_x;
         viajante->pos_y = ciudad->pos_y;
         l_insertar(&ciudades_ordenadas, POS_NULA, ciudad);
-        TPosicion pos_ciudad = (TPosicion)&ciudad;
-        l_eliminar(&lista,pos_ciudad);
+        eliminar_elemento(&lista,ciudad);
         cp_destruir(&cola);
     }
     invertir_lista(&ciudades_ordenadas);

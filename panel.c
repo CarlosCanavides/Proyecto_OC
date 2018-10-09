@@ -18,14 +18,15 @@ void mostrar_ciudades(TLista ciudades) {
     int cantidad_ciudades = l_size(ciudades);
     TCiudad ciudad;
     int orden = 0;
+    printf("\n \n");
     for(orden = 0; orden < cantidad_ciudades; orden++){
         ciudad = l_recuperar(ciudades, posicion_actual);
         char nombre[30];
         strcpy(nombre,ciudad->nombre);
-        printf(" %i %s \n ",orden+1,nombre);
+        printf(" %i %s \n",orden+1,nombre);
         posicion_actual = l_siguiente(ciudades,posicion_actual);
     }
-
+    printf("\n \n");
 }
 
 void elegir_opcion(int opcion, TLista ciudades, Viajante viajante){
@@ -39,11 +40,16 @@ void elegir_opcion(int opcion, TLista ciudades, Viajante viajante){
           }
           else {
                 if(opcion==3){
-                   ciudades_ordenadas = reducir_horas_manejo(ciudades,viajante);
+                    Viajante viajante_temp = (Viajante) malloc(sizeof(struct viajante));
+                    viajante_temp->pos_x = viajante->pos_x;
+                    viajante_temp->pos_y = viajante->pos_y;
+                    ciudades_ordenadas = reducir_horas_manejo(ciudades,viajante_temp);
+                    free(viajante_temp);
                 }
                 else {
-                     limpiar_lista(&ciudades);
-                     exit(0);
+                    free(viajante);
+                    limpiar_lista(&ciudades);
+                    exit(0);
                 }
           }
     }

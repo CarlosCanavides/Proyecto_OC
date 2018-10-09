@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lista.h"
-#include "comparadores.h"
+#include "utils.h"
 typedef struct ciudad {
     char * nombre;
     float pos_x;
@@ -17,7 +17,7 @@ typedef struct viajante {
 } * Viajante;
 
 
-int main_principal();
+int main(int argc, const char* arg[]);
 
 TLista mostrar_ciudades_ascendentes(TLista ciudades, Viajante viajante);
 

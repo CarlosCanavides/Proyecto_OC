@@ -6,25 +6,27 @@
 #include "lista_utils.h"
 #include "panel.h"
 #include "lector.h"
-#include "comparadores.h"
-#include "pesadores.h"
+#include "utils.h"
 
+int main(int argc, const char * arg[]){
+    FILE* archivo = abrir_archivo("./Datos/viajes");
+    /*if(argc==2){
+        archivo = abrir_archivo(arg[1]);
+    }
+    else{
+        exit(0);
+    }*/
+    TLista ciudades = obtener_ciudades(archivo);
+    Viajante viajante = obtener_viajante(archivo);
+    cerrar_archivo(archivo);
 
-int main_principal() {
-
-    // Falta la parte de solicitar al usuario el archivo correspondiente
-
-    FILE * archivo_ciudades = abrir_archivo("./Data/viajes");
-    TLista ciudades = obtener_ciudades(archivo_ciudades);
-    Viajante viajante = obtener_viajante(archivo_ciudades);
-    cerrar_archivo(archivo_ciudades);
-
-    mostrar_menu();
-    int inicializacion_por_defecto = 4;
-    int * eleccion = &inicializacion_por_defecto;
-    scanf("%i",eleccion);
-    while((*eleccion)!=0){
-        elegir_opcion(*eleccion,ciudades,viajante);
+    while(1){
+        mostrar_menu();
+        int input;
+        do{
+            scanf("%i", &input);
+        }while(input < 1 && input > 4);
+        elegir_opcion(input, ciudades, viajante);
     }
 
     return 0;

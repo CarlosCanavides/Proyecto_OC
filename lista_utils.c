@@ -76,12 +76,11 @@ void invertir_lista(TLista* plista){
 
 void eliminar_elemento(TLista * lista, TElemento elemento) {
     if(lista!=NULL && elemento!=NULL){
-        TPosicion ini = *lista;
+        TPosicion ini = l_primera(*lista);
         while((ini->elemento!=elemento) && (ini->celda_siguiente!=NULL)){
             ini = ini->celda_siguiente;
         }
-        if(ini!=NULL && ini->elemento==elemento){
-            free(elemento);
+        if(ini->elemento==elemento){
             l_eliminar(lista,ini);
         }
     }

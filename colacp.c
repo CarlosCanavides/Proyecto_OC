@@ -128,7 +128,7 @@ static int eliminar_hoja(TNodo* pnodo, TNodo* ppadre){
     }
     nodo->entrada = NULL;
     nodo->padre = POS_NULA;
-    free(nodo);
+    //free(nodo);
     return TRUE;
 }
 

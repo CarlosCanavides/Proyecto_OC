@@ -15,17 +15,16 @@ void mostrar_menu() {
 
 void mostrar_ciudades(TLista ciudades) {
     TPosicion posicion_actual = l_primera(ciudades);
-    TPosicion ultima_posicion = l_ultima(ciudades);
+    int cantidad_ciudades = l_size(ciudades);
     TCiudad ciudad;
     int orden = 0;
-    do{
+    for(orden = 0; orden < cantidad_ciudades; orden++){
         ciudad = l_recuperar(ciudades, posicion_actual);
         char nombre[30];
         strcpy(nombre,ciudad->nombre);
-        printf(" %i %s \n ",orden,nombre);
+        printf(" %i %s \n ",orden+1,nombre);
         posicion_actual = l_siguiente(ciudades,posicion_actual);
-        orden++;
-    } while(posicion_actual!=ultima_posicion);
+    }
 
 }
 

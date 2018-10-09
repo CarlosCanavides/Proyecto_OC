@@ -11,31 +11,15 @@
 
 
 int main_principal() {
-
-    // Falta la parte de solicitar al usuario el archivo correspondiente
-
-    FILE * archivo_ciudades = abrir_archivo("./Data/viajes");
-    TLista ciudades = obtener_ciudades(archivo_ciudades);
-    Viajante viajante = obtener_viajante(archivo_ciudades);
-    cerrar_archivo(archivo_ciudades);
-
-    mostrar_menu();
-    int inicializacion_por_defecto = 4;
-    int * eleccion = &inicializacion_por_defecto;
-    scanf("%i",eleccion);
-    while((*eleccion)!=0){
-        elegir_opcion(*eleccion,ciudades,viajante);
-    }
-
     return 0;
 }
 
 TLista mostrar_ciudades_ascendentes(TLista ciudades, Viajante viajante) {
-    return ordenar_lista(ciudades, ciudad_mas_cercana);
+    return ordenar_lista(ciudades, ciudad_mas_cercana, pesar_por_distancia_con_viajante, viajante);
 }
 
 TLista mostrar_ciudades_descendentes(TLista ciudades, Viajante viajante) {
-    return ordenar_lista(ciudades, ciudad_mas_lejana);
+    return ordenar_lista(ciudades, ciudad_mas_lejana, pesar_por_distancia_con_viajante, viajante);
 }
 
 TLista reducir_horas_manejo(TLista ciudades, Viajante viajante) {

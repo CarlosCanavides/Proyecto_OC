@@ -8,7 +8,7 @@
 FILE * abrir_archivo(char * nombre_archivo) {
     FILE * archivo = fopen(nombre_archivo,"r");
     if(archivo == NULL){
-        exit(0);
+        return NULL;
     }
     return archivo;
 }

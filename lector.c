@@ -5,6 +5,11 @@
 #include "planificador.h"
 #include "lector.h"
 
+/*!
+ *
+ * \brief Un resumen
+ */
+
 FILE * abrir_archivo(char * nombre_archivo) {
     FILE * archivo = fopen(nombre_archivo,"r");
     if(archivo == NULL){
@@ -13,6 +18,10 @@ FILE * abrir_archivo(char * nombre_archivo) {
     return archivo;
 }
 
+/*!
+ *
+ * \brief Un resumen
+ */
 void cerrar_archivo(FILE * archivo){
     fclose(archivo);
 }

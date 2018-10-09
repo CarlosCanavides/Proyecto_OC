@@ -1,0 +1,78 @@
+\hypertarget{planificador_8h}{\section{planificador.\+h File Reference}
+\label{planificador_8h}\index{planificador.\+h@{planificador.\+h}}
+}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}lista.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\\*
+Include dependency graph for planificador.\+h\+:
+This graph shows which files directly or indirectly include this file\+:
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structciudad}{ciudad}
+\item 
+struct \hyperlink{structviajante}{viajante}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structciudad}{ciudad} $\ast$ \hyperlink{planificador_8h_a4e643ec456e0892821b25f225176dabf}{T\+Ciudad}
+\item 
+typedef struct \hyperlink{structviajante}{viajante} $\ast$ \hyperlink{planificador_8h_ace3c11fef076e52c051fb40aa55afaa7}{Viajante}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{planificador_8h_a1fe5392a1bda63494cca67682af57675}{main} (int argc, const char $\ast$arg\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} \hyperlink{planificador_8h_a5bc26803cc7a928f8c38899d112405a3}{mostrar\+\_\+ciudades\+\_\+ascendentes} (\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} ciudades, \hyperlink{planificador_8h_ace3c11fef076e52c051fb40aa55afaa7}{Viajante} \hyperlink{structviajante}{viajante})
+\item 
+\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} \hyperlink{planificador_8h_ac4216d5fa142b866e2de6079ae64a45e}{mostrar\+\_\+ciudades\+\_\+descendentes} (\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} ciudades, \hyperlink{planificador_8h_ace3c11fef076e52c051fb40aa55afaa7}{Viajante} \hyperlink{structviajante}{viajante})
+\item 
+\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} \hyperlink{planificador_8h_ae56ce2cd54f0bfc4a351f7ee7e88d5ab}{reducir\+\_\+horas\+\_\+manejo} (\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} ciudades, \hyperlink{planificador_8h_ace3c11fef076e52c051fb40aa55afaa7}{Viajante} \hyperlink{structviajante}{viajante})
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{planificador_8h_a4e643ec456e0892821b25f225176dabf}{\index{planificador.\+h@{planificador.\+h}!T\+Ciudad@{T\+Ciudad}}
+\index{T\+Ciudad@{T\+Ciudad}!planificador.\+h@{planificador.\+h}}
+\subsubsection[{T\+Ciudad}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf ciudad} $\ast$  {\bf T\+Ciudad}}}\label{planificador_8h_a4e643ec456e0892821b25f225176dabf}
+\hypertarget{planificador_8h_ace3c11fef076e52c051fb40aa55afaa7}{\index{planificador.\+h@{planificador.\+h}!Viajante@{Viajante}}
+\index{Viajante@{Viajante}!planificador.\+h@{planificador.\+h}}
+\subsubsection[{Viajante}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf viajante} $\ast$  {\bf Viajante}}}\label{planificador_8h_ace3c11fef076e52c051fb40aa55afaa7}
+
+
+\subsection{Function Documentation}
+\hypertarget{planificador_8h_a1fe5392a1bda63494cca67682af57675}{\index{planificador.\+h@{planificador.\+h}!main@{main}}
+\index{main@{main}!planificador.\+h@{planificador.\+h}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{const char $\ast$}]{arg\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{planificador_8h_a1fe5392a1bda63494cca67682af57675}
+\hypertarget{planificador_8h_a5bc26803cc7a928f8c38899d112405a3}{\index{planificador.\+h@{planificador.\+h}!mostrar\+\_\+ciudades\+\_\+ascendentes@{mostrar\+\_\+ciudades\+\_\+ascendentes}}
+\index{mostrar\+\_\+ciudades\+\_\+ascendentes@{mostrar\+\_\+ciudades\+\_\+ascendentes}!planificador.\+h@{planificador.\+h}}
+\subsubsection[{mostrar\+\_\+ciudades\+\_\+ascendentes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\+Lista} mostrar\+\_\+ciudades\+\_\+ascendentes (
+\begin{DoxyParamCaption}
+\item[{{\bf T\+Lista}}]{ciudades, }
+\item[{{\bf Viajante}}]{viajante}
+\end{DoxyParamCaption}
+)}}\label{planificador_8h_a5bc26803cc7a928f8c38899d112405a3}
+\hypertarget{planificador_8h_ac4216d5fa142b866e2de6079ae64a45e}{\index{planificador.\+h@{planificador.\+h}!mostrar\+\_\+ciudades\+\_\+descendentes@{mostrar\+\_\+ciudades\+\_\+descendentes}}
+\index{mostrar\+\_\+ciudades\+\_\+descendentes@{mostrar\+\_\+ciudades\+\_\+descendentes}!planificador.\+h@{planificador.\+h}}
+\subsubsection[{mostrar\+\_\+ciudades\+\_\+descendentes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\+Lista} mostrar\+\_\+ciudades\+\_\+descendentes (
+\begin{DoxyParamCaption}
+\item[{{\bf T\+Lista}}]{ciudades, }
+\item[{{\bf Viajante}}]{viajante}
+\end{DoxyParamCaption}
+)}}\label{planificador_8h_ac4216d5fa142b866e2de6079ae64a45e}
+\hypertarget{planificador_8h_ae56ce2cd54f0bfc4a351f7ee7e88d5ab}{\index{planificador.\+h@{planificador.\+h}!reducir\+\_\+horas\+\_\+manejo@{reducir\+\_\+horas\+\_\+manejo}}
+\index{reducir\+\_\+horas\+\_\+manejo@{reducir\+\_\+horas\+\_\+manejo}!planificador.\+h@{planificador.\+h}}
+\subsubsection[{reducir\+\_\+horas\+\_\+manejo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\+Lista} reducir\+\_\+horas\+\_\+manejo (
+\begin{DoxyParamCaption}
+\item[{{\bf T\+Lista}}]{ciudades, }
+\item[{{\bf Viajante}}]{viajante}
+\end{DoxyParamCaption}
+)}}\label{planificador_8h_ae56ce2cd54f0bfc4a351f7ee7e88d5ab}

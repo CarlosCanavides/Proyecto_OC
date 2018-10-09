@@ -3,54 +3,6 @@
 #include "lista.h"
 #include "constantes.h"
 
-void lista_test(){
-    int a = 1;
-    int b = 2;
-    int c = 3;
-    int d = 4;
-
-    TElemento pa = &a;
-    TElemento pb = &b;
-    TElemento pc = &c;
-    TElemento pd = &d;
-
-    TLista listC = crear_lista();
-
-    int rA = l_insertar(&listC,l_primera(listC),pa);
-    int rB = l_insertar(&listC,NULL,pb);
-    int rC = l_insertar(&listC,NULL,pc);
-    int rD = l_insertar(&listC,NULL,pd);
-
-    printf("Exito de la 1ra inserccion : %i \n",rA);
-    printf("Exito de la 2da inserccion : %i \n",rB);
-    printf("Exito de la 3ra inserccion : %i \n",rC);
-    printf("Exito de la 4ta inserccion : %i \n",rD);
-
-    TPosicion posD = l_primera(listC);
-    TPosicion posC = l_siguiente(listC,posD);
-    TPosicion posB = l_siguiente(listC,posC);
-    TPosicion posA = l_siguiente(listC,posB);
-
-    printf("Size = %i \n",l_size(listC));
-
-    int * elemA = l_recuperar(listC,posA);
-    int * elemB = l_recuperar(listC,posB);
-    int * elemC = l_recuperar(listC,posC);
-    int * elemD = l_recuperar(listC,posD);
-
-    printf("Elemento A : %i \n",*elemA);
-    printf("Elemento B : %i \n",*elemB);
-    printf("Elemento C : %i \n",*elemC);
-    printf("Elemento D : %i \n",*elemD);
-
-    TPosicion posU = l_ultima(listC);
-    int * elemU = l_recuperar(listC,posU);
-    if(elemU!=NULL){ printf("HOLA : %i \n",*elemU); }
-
-    l_destruir(&listC);
-    printf("Size = %i \n",l_size(listC));
-}
-
 struct celda * crear_celda() {
     struct celda * nueva = (struct celda *)malloc(sizeof(struct celda));
     nueva->celda_anterior  = NULL;
@@ -77,7 +29,6 @@ int l_insertar(TLista * lista, TPosicion pos, TElemento elem) {
                    recorrido->elemento = elem;
                    resultado = 1;
                 }
-                // ¿Qué pasa si la posición de la lista no existe? (es la posicion de otra lista)
             }
             else{
                 struct celda * nueva = crear_celda();

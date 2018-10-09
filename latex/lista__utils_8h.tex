@@ -1,0 +1,119 @@
+\hypertarget{lista__utils_8h}{\section{lista\+\_\+utils.\+h File Reference}
+\label{lista__utils_8h}\index{lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}}
+}
+{\ttfamily \#include \char`\"{}lista.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}colacp.\+h\char`\"{}}\\*
+Include dependency graph for lista\+\_\+utils.\+h\+:
+This graph shows which files directly or indirectly include this file\+:
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} \hyperlink{lista__utils_8h_a04131207a25ff49c6c9114b4a9d1897d}{ordenar\+\_\+lista} (\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} lista, int($\ast$comparador)(\hyperlink{colacp_8h_ad68b19b2fd7a87dd871dc67b308824df}{T\+Entrada}, \hyperlink{colacp_8h_ad68b19b2fd7a87dd871dc67b308824df}{T\+Entrada}), void $\ast$($\ast$pesador)(\hyperlink{lista_8h_a7994b6059a81be0ecfe9887d1715b8a7}{T\+Elemento}, void $\ast$optarg), void $\ast$optarg)
+\begin{DoxyCompactList}\small\item\em Recibe una lista, una funcion comparadora, una funcion pesadora y retorna una nueva lista con el orden resultante. \end{DoxyCompactList}\item 
+\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} \hyperlink{lista__utils_8h_a5c85a7937b84a25972391f385583af08}{duplicar\+\_\+lista} (\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} lista)
+\begin{DoxyCompactList}\small\item\em Recibe una lista y retorna una lista duplicada con los mismos elementos. \end{DoxyCompactList}\item 
+void \hyperlink{lista__utils_8h_a623a5a442d9f7c8c70d72e6e1425d04a}{limpiar\+\_\+lista} (\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} $\ast$lista)
+\begin{DoxyCompactList}\small\item\em Recibe un puntero a una lista y elimina todos sus elementos, liberando tambien la memoria que puedan estar ocupando. \end{DoxyCompactList}\item 
+void \hyperlink{lista__utils_8h_a7aca7d0c836ed4dc1583963a55a2ceec}{invertir\+\_\+lista} (\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} $\ast$lista)
+\begin{DoxyCompactList}\small\item\em Recibe un puntero a una lista e invierte el orden de sus elementos. \end{DoxyCompactList}\item 
+void \hyperlink{lista__utils_8h_a7597c3e58c444396faab2fbd43737b4d}{eliminar\+\_\+elemento} (\hyperlink{lista_8h_a477d061327a3e3188de727ac6c33ac47}{T\+Lista} $\ast$lista, \hyperlink{lista_8h_a7994b6059a81be0ecfe9887d1715b8a7}{T\+Elemento} elemento)
+\begin{DoxyCompactList}\small\item\em Recibe un puntero a una lista y un elemento, si el elemento pertenece a la lista, este es eliminado de la misma. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{lista__utils_8h_a5c85a7937b84a25972391f385583af08}{\index{lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}!duplicar\+\_\+lista@{duplicar\+\_\+lista}}
+\index{duplicar\+\_\+lista@{duplicar\+\_\+lista}!lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}}
+\subsubsection[{duplicar\+\_\+lista}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\+Lista} duplicar\+\_\+lista (
+\begin{DoxyParamCaption}
+\item[{{\bf T\+Lista}}]{lista}
+\end{DoxyParamCaption}
+)}}\label{lista__utils_8h_a5c85a7937b84a25972391f385583af08}
+
+
+Recibe una lista y retorna una lista duplicada con los mismos elementos. 
+
+Los elementos de la nueva lista son los mismos que la lista original.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista} & Lista original \\
+\hline
+\end{DoxyParams}
+\hypertarget{lista__utils_8h_a7597c3e58c444396faab2fbd43737b4d}{\index{lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}!eliminar\+\_\+elemento@{eliminar\+\_\+elemento}}
+\index{eliminar\+\_\+elemento@{eliminar\+\_\+elemento}!lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}}
+\subsubsection[{eliminar\+\_\+elemento}]{\setlength{\rightskip}{0pt plus 5cm}void eliminar\+\_\+elemento (
+\begin{DoxyParamCaption}
+\item[{{\bf T\+Lista} $\ast$}]{lista, }
+\item[{{\bf T\+Elemento}}]{elemento}
+\end{DoxyParamCaption}
+)}}\label{lista__utils_8h_a7597c3e58c444396faab2fbd43737b4d}
+
+
+Recibe un puntero a una lista y un elemento, si el elemento pertenece a la lista, este es eliminado de la misma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista} & Lista donde se buscara el elemento. \\
+\hline
+{\em elemento} & Elemento que se desea eliminar de la lista. \\
+\hline
+\end{DoxyParams}
+\hypertarget{lista__utils_8h_a7aca7d0c836ed4dc1583963a55a2ceec}{\index{lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}!invertir\+\_\+lista@{invertir\+\_\+lista}}
+\index{invertir\+\_\+lista@{invertir\+\_\+lista}!lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}}
+\subsubsection[{invertir\+\_\+lista}]{\setlength{\rightskip}{0pt plus 5cm}void invertir\+\_\+lista (
+\begin{DoxyParamCaption}
+\item[{{\bf T\+Lista} $\ast$}]{lista}
+\end{DoxyParamCaption}
+)}}\label{lista__utils_8h_a7aca7d0c836ed4dc1583963a55a2ceec}
+
+
+Recibe un puntero a una lista e invierte el orden de sus elementos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista} & Puntero a la lista que sera invertida. \\
+\hline
+\end{DoxyParams}
+\hypertarget{lista__utils_8h_a623a5a442d9f7c8c70d72e6e1425d04a}{\index{lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}!limpiar\+\_\+lista@{limpiar\+\_\+lista}}
+\index{limpiar\+\_\+lista@{limpiar\+\_\+lista}!lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}}
+\subsubsection[{limpiar\+\_\+lista}]{\setlength{\rightskip}{0pt plus 5cm}void limpiar\+\_\+lista (
+\begin{DoxyParamCaption}
+\item[{{\bf T\+Lista} $\ast$}]{lista}
+\end{DoxyParamCaption}
+)}}\label{lista__utils_8h_a623a5a442d9f7c8c70d72e6e1425d04a}
+
+
+Recibe un puntero a una lista y elimina todos sus elementos, liberando tambien la memoria que puedan estar ocupando. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista} & Puntero a la lista a limpiar. \\
+\hline
+\end{DoxyParams}
+\hypertarget{lista__utils_8h_a04131207a25ff49c6c9114b4a9d1897d}{\index{lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}!ordenar\+\_\+lista@{ordenar\+\_\+lista}}
+\index{ordenar\+\_\+lista@{ordenar\+\_\+lista}!lista\+\_\+utils.\+h@{lista\+\_\+utils.\+h}}
+\subsubsection[{ordenar\+\_\+lista}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\+Lista} ordenar\+\_\+lista (
+\begin{DoxyParamCaption}
+\item[{{\bf T\+Lista}}]{lista, }
+\item[{int($\ast$)({\bf T\+Entrada}, {\bf T\+Entrada})}]{comparador, }
+\item[{void $\ast$($\ast$)({\bf T\+Elemento}, void $\ast$optarg)}]{pesador, }
+\item[{void $\ast$}]{optarg}
+\end{DoxyParamCaption}
+)}}\label{lista__utils_8h_a04131207a25ff49c6c9114b4a9d1897d}
+
+
+Recibe una lista, una funcion comparadora, una funcion pesadora y retorna una nueva lista con el orden resultante. 
+
+Utiliza una cola con prioridad para insertar los elementos de la lista y formar la nueva lista ordenada. La prioridad de los elementos se obtiene a traves de la funcion pesadora.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista} & Lista original. \\
+\hline
+{\em comparador} & Funcion que compara dos entradas (clave-\/valor). \\
+\hline
+{\em pesador} & Funcion que dado un elemento y un argumento opcional retorna la prioridad o peso que tiene. \\
+\hline
+{\em optarg} & Puntero void a un argumento opcional para entregarselo a la funcion pesador. \\
+\hline
+\end{DoxyParams}

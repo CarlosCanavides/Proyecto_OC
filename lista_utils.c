@@ -50,10 +50,11 @@ void limpiar_lista(TLista * lista){
     if(lista != NULL){
         int cantidad_elementos = l_size(*lista);
         int i = 0;
-        for(i=0; i<cantidad_elementos ; i++){
-            TPosicion pos = l_primera(*lista);
+        TPosicion pos = l_primera(*lista);
+        while(pos != NULL){
             TElemento temporal = l_recuperar(*lista,pos);
             free(temporal);
+            pos = l_siguiente(*lista, pos);
         }
         l_destruir(lista);
     }

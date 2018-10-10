@@ -10,7 +10,7 @@ typedef void * TElemento;
 * \brief Representacion de una celda de la lista.
 *
 * Toda celda perteneciente a la lista tiene un TElemento asociado.
-* Se guarda una referencia a a la celda_anterior y celda_siguiente.
+* Se guarda una referencia a la celda_anterior y celda_siguiente.
 */
 struct celda {
     TElemento elemento;
@@ -40,16 +40,19 @@ typedef struct celda * TLista;
 TLista crear_lista();
 
 /**
-* \brief Agrega el elemento elemen a la posicion pos, dentro de la lista. Si pos es POS_NULA, inserta el elemento en la primera posicion de la lista. Retorna verdadero si procede con exito, falso en caso contrario.
+* \brief Agrega el elemento elem a la posicion pos, dentro de la lista. Si pos es POS_NULA, inserta el elemento en la primera posicion de la lista.
 *
-* \param TLista * lista, puntero a una lista donde se va a insertar el elemento.
+* Retorna verdadero si procede con exito, falso en caso contrario.
+* Se considera que la posición pasada como parametro sea una POS_NULA o bien pertenezca a la respectiva lista (se requiere esto para lograr un mejor desempeño del TDA_LISTA en cuanto a tiempo de ejecucion).
+* \param TLista * lista, puntero a la lista donde se va a insertar el elemento.
 * \param TPosicion pos posicion en la cual se va a insertar el elemento.
 */
 int l_insertar(TLista * lista, TPosicion pos, TElemento elem);
 
 /**
-* \brief Elimina el elemento en la posicion pos. Reacomoda la lista adecuadamente. Retorna verdadero si procede con exito, falso en caso contrario.
+* \brief Elimina el elemento de la posicion pos. Reacomoda la lista adecuadamente. Retorna verdadero si procede con exito, falso en caso contrario.
 *
+* Se considera que la posición pasada como parametro sea una POS_NULA o bien pertenezca a la respectiva lista (se requiere esto para lograr un mejor desempeño del TDA_LISTA en cuanto a tiempo de ejecucion).
 * \param TLista * lista, puntero a una lista donde se va a insertar el elemento.
 * \param TPosicion pos posicion que se va a eliminar de la lista.
 */
@@ -72,6 +75,7 @@ TPosicion l_ultima (TLista lista);
 /**
 * \brief Retorna la posicion anterior a pos en la lista. Si pos es la primera posicion de la lista, retorna POS_NULA.
 *
+* Se considera que la posición pasada como parametro sea una POS_NULA o bien pertenezca a la respectiva lista (se requiere esto para lograr un mejor desempeño del TDA_LISTA en cuanto a tiempo de ejecucion).
 * \param TLista lista a la que se solicita la posicion anterior a pos.
 * \param TPosicion pos posicion de referencia.
 */
@@ -80,6 +84,7 @@ TPosicion l_anterior (TLista lista, TPosicion pos);
 /**
 * \brief Retorna la posicion siguiente a pos en la lista. Si pos es la ultima posicion de la lista, retorna POS_NULA.
 *
+* Se considera que la posición pasada como parametro sea una POS_NULA o bien pertenezca a la respectiva lista (se requiere esto para lograr un mejor desempeño del TDA_LISTA en cuanto a tiempo de ejecucion).
 * \param TLista lista a la que se solicita la posicion siguiente a pos.
 * \param TPosicion pos posicion de referencia.
 */
@@ -88,6 +93,7 @@ TPosicion l_siguiente(TLista lista, TPosicion pos);
 /**
 * \brief Retorna el elemento correspondiente a la posicion pos. Si la posicion es POS_NULA, retorna ELE_NULO.
 *
+* Se considera que la posición pasada como parametro sea una POS_NULA o bien pertenezca a la respectiva lista (se requiere esto para lograr un mejor desempeño del TDA_LISTA en cuanto a tiempo de ejecucion).
 * \param TLista lista de la cual se va a recuperar el elemento de la posicion pasada como parametro.
 * \param TPosicion pos posicion de referencia.
 */
@@ -103,6 +109,7 @@ int l_size(TLista lista);
 /**
 * \brief Elimina todos los elementos y libera toda la memoria utilizada por la lista. Retorna verdadero si procede con exito, falso en caso contrario
 *
+* Observación : no es responsabilidad del TDA_LISTA liberar el espacio de memoria correspondiente a los elementos almacenados en la lista (queda a cargo del cliente).
 * \param TLista lista que sera destruida.
 */
 int l_destruir(TLista * lista);

@@ -9,13 +9,15 @@
 #include "utils.h"
 
 int main(int argc, const char * arg[]){
-    FILE* archivo = abrir_archivo("./Datos/viajes");
-    /*if(argc==2){
+    FILE* archivo;
+    /*FILE* archivo = abrir_archivo("./Datos/viajes");*/
+    /*FILE* archivo = abrir_archivo("../../../Proyecto_OC/Datos/viajes");*/
+    if(argc==2){
         archivo = abrir_archivo(arg[1]);
     }
     else{
         exit(0);
-    }*/
+    }
     TLista ciudades = obtener_ciudades(archivo);
     Viajante viajante = obtener_viajante(archivo);
     cerrar_archivo(archivo);
@@ -53,17 +55,28 @@ TLista reducir_horas_manejo(TLista ciudades, Viajante viajante) {
         TPosicion ini = l_primera(lista);
         while(ini != POS_NULA){
             TCiudad elem = l_recuperar(lista, ini);
-            TEntrada nueva_entrada = (TEntrada) malloc(sizeof(TEntrada));
+            TEntrada nueva_entrada = (TEntrada) malloc(sizeof(struct entrada));
             nueva_entrada->clave = pesar_por_distancia_con_viajante(elem,viajante);
             nueva_entrada->valor = elem;
             cp_insertar(cola, nueva_entrada);
             ini = l_siguiente(lista, ini);
         }
-        TCiudad ciudad = (cp_eliminar(cola))->valor;
+        TEntrada primera_entrada = cp_eliminar(cola);
+        TCiudad ciudad = primera_entrada->valor;
+        free(primera_entrada->clave);
+        free(primera_entrada);
         viajante->pos_x = ciudad->pos_x;
         viajante->pos_y = ciudad->pos_y;
         l_insertar(&ciudades_ordenadas, POS_NULA, ciudad);
         eliminar_elemento(&lista,ciudad);
+
+        // Agregado nuevo
+        while(cp_size(cola) > 0){
+        TEntrada entr_temp = cp_eliminar(cola);
+        free(entr_temp->clave);
+        free(entr_temp);
+        }
+        //
         cp_destruir(&cola);
     }
     l_destruir(&lista);

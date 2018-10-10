@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "lista_utils.h"
 #include "constantes.h"
+#include "planificador.h"
 
 TLista ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*pesador)(TElemento, void* optarg), void*optarg){
     if(lista == NULL){
@@ -50,7 +51,8 @@ void limpiar_lista(TLista * lista){
     if(lista != NULL){
         TPosicion pos = l_primera(*lista);
         while(pos != NULL){
-            TElemento temporal = l_recuperar(*lista,pos);
+            TCiudad temporal = l_recuperar(*lista,pos);
+            free(temporal->nombre);
             free(temporal);
             pos = l_siguiente(*lista, pos);
         }

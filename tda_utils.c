@@ -1,11 +1,11 @@
 #include <stdlib.h>
-#include "lista_utils.h"
+#include "tda_utils.h"
 #include "constantes.h"
 #include "planificador.h"
 
 TLista ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*pesador)(TElemento, void* optarg), void*optarg){
-    if(lista == NULL){
-        return NULL;
+    if(lista == POS_NULA){
+        return POS_NULA;
     }
     TLista nuevaLista = crear_lista();
     TColaCP cola = crear_cola_cp(comparador);
@@ -35,8 +35,8 @@ TLista ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*
 }
 
 TLista duplicar_lista(TLista lista){
-    if(lista == NULL){
-        return NULL;
+    if(lista == POS_NULA){
+        return POS_NULA;
     }
     TLista nuevaLista = crear_lista();
     TPosicion ultima = l_ultima(lista);
@@ -47,16 +47,29 @@ TLista duplicar_lista(TLista lista){
     return nuevaLista;
 }
 
-void limpiar_lista(TLista * lista){
+void limpiar_lista_ciudades(TLista * lista){
     if(lista != NULL){
         TPosicion pos = l_primera(*lista);
-        while(pos != NULL){
+        while(pos != POS_NULA){
             TCiudad temporal = l_recuperar(*lista,pos);
             free(temporal->nombre);
             free(temporal);
             pos = l_siguiente(*lista, pos);
         }
         l_destruir(lista);
+    }
+}
+
+void limpiar_ccp_ciudades(TColaCP * cola) {
+    if(cola!=NULL) {
+        int size = cp_size(*cola);
+        while(size > 0){
+            TEntrada entr_temp = cp_eliminar(*cola);
+            free(entr_temp->clave);
+            free(entr_temp);
+            size--;
+        }
+        cp_destruir(cola);
     }
 }
 
@@ -76,9 +89,9 @@ void invertir_lista(TLista* plista){
 }
 
 void eliminar_elemento(TLista * lista, TElemento elemento) {
-    if(lista!=NULL && elemento!=NULL){
+    if(lista!=NULL && elemento!=ELE_NULO){
         TPosicion ini = l_primera(*lista);
-        while((ini->elemento!=elemento) && (ini->celda_siguiente!=NULL)){
+        while((ini->elemento!=elemento) && (ini->celda_siguiente!=POS_NULA)){
             ini = ini->celda_siguiente;
         }
         if(ini->elemento==elemento){

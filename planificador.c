@@ -3,7 +3,7 @@
 #include "planificador.h"
 #include "constantes.h"
 #include "lista.h"
-#include "lista_utils.h"
+#include "tda_utils.h"
 #include "panel.h"
 #include "lector.h"
 #include "utils.h"
@@ -70,14 +70,8 @@ TLista reducir_horas_manejo(TLista ciudades, Viajante viajante) {
         l_insertar(&ciudades_ordenadas, POS_NULA, ciudad);
         eliminar_elemento(&lista,ciudad);
 
-        // Agregado nuevo
-        while(cp_size(cola) > 0){
-        TEntrada entr_temp = cp_eliminar(cola);
-        free(entr_temp->clave);
-        free(entr_temp);
-        }
-        //
-        cp_destruir(&cola);
+        limpiar_ccp_ciudades(&cola);
+
     }
     l_destruir(&lista);
     invertir_lista(&ciudades_ordenadas);

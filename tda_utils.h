@@ -35,7 +35,14 @@ TLista duplicar_lista(TLista lista);
 *
 * \param lista Puntero a la lista a limpiar.
 */
-void limpiar_lista(TLista* lista);
+void limpiar_lista_ciudades(TLista * lista);
+
+/**
+* \brief Recibe un puntero a una cola con prioridad y elimina todas sus entradas, liberando el espacio de memoria reservado.
+*
+* \param lista Puntero a la ccp a limpiar.
+*/
+void limpiar_ccp_ciudades(TColaCP * cola);
 
 
 /**

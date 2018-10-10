@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "panel.h"
-#include "lista_utils.h"
+#include "tda_utils.h"
 
 void mostrar_menu() {
     printf(" PLANIFICADOR DE VIAJES \n ");
@@ -52,7 +52,7 @@ void elegir_opcion(int opcion, TLista ciudades, Viajante viajante){
                 else {
                       if(opcion==4){
                          free(viajante);
-                         limpiar_lista(&ciudades);
+                         limpiar_lista_ciudades(&ciudades);
                          exit(0);
                       }
                       else{

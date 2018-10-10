@@ -48,8 +48,6 @@ TLista duplicar_lista(TLista lista){
 
 void limpiar_lista(TLista * lista){
     if(lista != NULL){
-        int cantidad_elementos = l_size(*lista);
-        int i = 0;
         TPosicion pos = l_primera(*lista);
         while(pos != NULL){
             TElemento temporal = l_recuperar(*lista,pos);

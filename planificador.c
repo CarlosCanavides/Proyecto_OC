@@ -66,6 +66,7 @@ TLista reducir_horas_manejo(TLista ciudades, Viajante viajante) {
         eliminar_elemento(&lista,ciudad);
         cp_destruir(&cola);
     }
+    l_destruir(&lista);
     invertir_lista(&ciudades_ordenadas);
     return ciudades_ordenadas;
 }

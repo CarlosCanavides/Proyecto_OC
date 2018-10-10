@@ -27,6 +27,7 @@ void mostrar_ciudades(TLista ciudades) {
         posicion_actual = l_siguiente(ciudades,posicion_actual);
     }
     printf("\n \n");
+    l_destruir(&ciudades);
 }
 
 void elegir_opcion(int opcion, TLista ciudades, Viajante viajante){

@@ -28,7 +28,7 @@ typedef struct viajante {
 } * Viajante;
 
 
-int main(int argc, const char* arg[]);
+int main(int argc, char* arg[]);
 
 
 /**

@@ -178,110 +178,20 @@ int cp_size(TColaCP cola){
     return cola->cantidad_elementos;
 }
 
-int cp_destruir(TColaCP* cola){
-    if(cola == NULL || *cola == NULL){
+int cp_destruir(TColaCP cola){
+    if(cola == NULL){
         exit(CCP_NO_INI);
     }
-    TNodo* padre_ultimo_nodo;
-    TNodo* ultimo_nodo;
-    while((*cola)->cantidad_elementos > 0){
-        ultimo_nodo = buscar_posicion(*cola, (*cola)->cantidad_elementos, padre_ultimo_nodo);
+    TNodo* padre_ultimo_nodo = NULL;
+    TNodo* ultimo_nodo = NULL;
+    while(cola->cantidad_elementos > 0){
+        ultimo_nodo = buscar_posicion(cola, cola->cantidad_elementos, padre_ultimo_nodo);
         eliminar_hoja(ultimo_nodo, padre_ultimo_nodo);
-        (*cola)->cantidad_elementos--;
+        cola->cantidad_elementos--;
     }
-    (*cola)->raiz = POS_NULA;
-    (*cola)->comparador = NULL;
-    free(*cola);
+    cola->raiz = POS_NULA;
+    cola->comparador = NULL;
+    free(cola);
     cola = NULL;
     return 1;
-}
-
-int comparador_prueba_int(TEntrada a, TEntrada b){
-    int clave_a =  *((int*)(a->clave));
-    int clave_b =  *((int*)(b->clave));
-    if(clave_a > clave_b){
-        return 1;
-    }
-    else if(clave_a == clave_b){
-        return 0;
-    }
-    else{
-        return -1;
-    }
-}
-
-void test_cola_con_prioridad(){
-    // Creo varias entradas
-    TEntrada e1 = (TEntrada) malloc(sizeof(struct entrada));
-    TEntrada e2 = (TEntrada) malloc(sizeof(struct entrada));
-    TEntrada e3 = (TEntrada) malloc(sizeof(struct entrada));
-    TEntrada e4 = (TEntrada) malloc(sizeof(struct entrada));
-    TEntrada e5 = (TEntrada) malloc(sizeof(struct entrada));
-    TEntrada e6 = (TEntrada) malloc(sizeof(struct entrada));
-    TEntrada e7 = (TEntrada) malloc(sizeof(struct entrada));
-    {
-        int c1 = 2;
-        int v1 = 86;
-        e1->clave = &c1;
-        e1->valor = &v1;
-        int c2 = 6;
-        int v2 = 43;
-        e2->clave = &c2;
-        e2->valor = &v2;
-        int c3 = 9;
-        int v3 = 65;
-        e3->clave = &c3;
-        e3->valor = &v3;
-        int c4 = 5;
-        int v4 = 45;
-        e4->clave = &c4;
-        e4->valor = &v4;
-        int c5 = 1;
-        int v5 = 76;
-        e5->clave = &c5;
-        e5->valor = &v5;
-        int c6 = 10;
-        int v6 = 98;
-        e6->clave = &c6;
-        e6->valor = &v6;
-        int c7 = 3;
-        int v7 = 22;
-        e7->clave = &c7;
-        e7->valor = &v7;
-    }
-
-    // Probamos insertar, anda bien
-    TColaCP cola = crear_cola_cp(*comparador_prueba_int);
-    int size = cp_size(cola);
-    cp_insertar(cola, e1);
-    size = cp_size(cola);
-    cp_insertar(cola, e3);
-    cp_insertar(cola, e4);
-    cp_insertar(cola, e2);
-    cp_insertar(cola, e5);
-    cp_insertar(cola, e6);
-
-    // Probamos eliminar todo(Unico problema es free)
-    TNodo test = cola->raiz->hijo_izquierdo;
-
-    size = cp_size(cola);
-    int clave;
-    clave = *((int*)cp_eliminar(cola)->clave);
-    clave = *((int*)cp_eliminar(cola)->clave);
-    clave = *((int*)cp_eliminar(cola)->clave);
-    clave = *((int*)cp_eliminar(cola)->clave);
-    clave = *((int*)cp_eliminar(cola)->clave);
-    cp_insertar(cola, e1);
-    clave = *((int*)cp_eliminar(cola)->clave);
-    clave = *((int*)cp_eliminar(cola)->clave);
-
-    // Probamos insertar y luego destruir
-    cp_insertar(cola, e1);
-    cp_insertar(cola, e2);
-    cp_insertar(cola, e3);
-    cp_insertar(cola, e4);
-    cp_insertar(cola, e5);
-    cp_insertar(cola, e6);
-    cp_insertar(cola, e7);
-    cp_destruir(&cola);
 }

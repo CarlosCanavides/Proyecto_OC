@@ -98,7 +98,7 @@ int cp_size(TColaCP cola);
 *
 * \param cola Cola con prioridad que se desea destruir.
 */
-int cp_destruir(TColaCP* cola);
+int cp_destruir(TColaCP cola);
 
 #endif
 

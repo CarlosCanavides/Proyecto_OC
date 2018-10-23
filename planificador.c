@@ -8,7 +8,7 @@
 #include "lector.h"
 #include "utils.h"
 
-int main(int argc, const char * arg[]){
+int main(int argc, char * arg[]){
     FILE* archivo;
     /*FILE* archivo = abrir_archivo("./Datos/viajes");*/
     /*FILE* archivo = abrir_archivo("../../../Proyecto_OC/Datos/viajes");*/

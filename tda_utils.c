@@ -30,7 +30,7 @@ TLista ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*
     }
 
     invertir_lista(&nuevaLista);
-    cp_destruir(&cola);
+    cp_destruir(cola);
     return nuevaLista;
 }
 
@@ -69,7 +69,7 @@ void limpiar_ccp_ciudades(TColaCP * cola) {
             free(entr_temp);
             size--;
         }
-        cp_destruir(cola);
+        cp_destruir(*cola);
     }
 }
 

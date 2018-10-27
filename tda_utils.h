@@ -17,7 +17,7 @@
 * \param pesador Funcion que dado un elemento y un argumento opcional retorna la prioridad o peso que tiene.
 * \param optarg Puntero void a un argumento opcional para entregarselo a la funcion pesador.
 */
-TLista ordenar_lista(TLista lista, int (*comparador)(TEntrada, TEntrada), void* (*pesador)(TElemento, void* optarg), void* optarg);
+void ordenar_lista(TLista lista, int (*comparador)(TEntrada, TEntrada), void* (*pesador)(TElemento, void* optarg), void* optarg);
 
 
 /**
@@ -43,15 +43,6 @@ void limpiar_lista_ciudades(TLista * lista);
 * \param lista Puntero a la ccp a limpiar.
 */
 void limpiar_ccp_ciudades(TColaCP * cola);
-
-
-/**
-* \brief Recibe un puntero a una lista e invierte el orden de sus elementos.
-*
-* \param lista Puntero a la lista que sera invertida.
-*/
-void invertir_lista(TLista* lista);
-
 
 /**
 * \brief Recibe un puntero a una lista y un elemento, si el elemento

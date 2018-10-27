@@ -3,11 +3,10 @@
 #include "constantes.h"
 #include "planificador.h"
 
-TLista ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*pesador)(TElemento, void* optarg), void*optarg){
+void ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*pesador)(TElemento, void* optarg), void*optarg){
     if(lista == POS_NULA){
         return POS_NULA;
     }
-    TLista nuevaLista = crear_lista();
     TColaCP cola = crear_cola_cp(comparador);
     TPosicion ini = l_primera(lista);
     TEntrada entr_temp;
@@ -21,20 +20,22 @@ TLista ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*
         ini = l_siguiente(lista, ini);
     }
 
-    while(cp_size(cola) > 0){
+    // Una vez armada la ccp correspondiente se procede a mostrar por pantalla las ciudades con sus respectivos ordenes.
+    // Además se libera el espacio de memoria reservado para cada entrada y su respectiva clave.
+    int orden = 0;
+    int size = cp_size(cola);
+    for(orden; orden<size; orden++) {
         entr_temp = cp_eliminar(cola);
         elem_temp = entr_temp->valor;
         free(entr_temp->clave);
         free(entr_temp);
-        l_insertar(&nuevaLista, POS_NULA, elem_temp);
+        imprimir_ciudad(elem_temp,orden+1); // Muestra las ciudades por pantalla.
     }
-
-    invertir_lista(&nuevaLista);
     cp_destruir(cola);
-    return nuevaLista;
 }
 
 TLista duplicar_lista(TLista lista){
+    // Se realiza una copia superficial de la lista pasada como parámetro.
     if(lista == POS_NULA){
         return POS_NULA;
     }
@@ -51,12 +52,12 @@ void limpiar_lista_ciudades(TLista * lista){
     if(lista != NULL){
         TPosicion pos = l_primera(*lista);
         while(pos != POS_NULA){
-            TCiudad temporal = l_recuperar(*lista,pos);
-            free(temporal->nombre);
-            free(temporal);
-            pos = l_siguiente(*lista, pos);
+            TCiudad temporal = l_recuperar(*lista,pos); // Se recupera la ciudad para poder liberar su espacio de memoria.
+            pos = l_siguiente(*lista, pos); // Se actualiza la pos para luego poder seguir con el recorrido.
+            free(temporal->nombre);        // Se libera el espacio de memoria reservado para su nombre.
+            free(temporal);               // Se libera el espacio de memoria reservado para la ciudad.
         }
-        l_destruir(lista);
+        l_destruir(lista);              // Finalmente se destruye la lista.
     }
 }
 
@@ -64,31 +65,17 @@ void limpiar_ccp_ciudades(TColaCP * cola) {
     if(cola!=NULL) {
         int size = cp_size(*cola);
         while(size > 0){
-            TEntrada entr_temp = cp_eliminar(*cola);
-            free(entr_temp->clave);
-            free(entr_temp);
+            TEntrada entr_temp = cp_eliminar(*cola); // Obtengo la entrada mínima de la ccp.
+            free(entr_temp->clave);  // Se libera el espacio de memoria reservado para la clave de la entrada.
+            free(entr_temp);         // Se libera el espacio de memoria reservado para la entrada.
             size--;
         }
         cp_destruir(*cola);
     }
 }
 
-void invertir_lista(TLista* plista){
-    if(plista != NULL && l_size(*plista)>1){
-        TLista lista = *plista;
-        TPosicion ini = l_primera(lista);
-        TPosicion fin = l_ultima(lista);
-        while(ini != fin && l_anterior(lista, ini) != fin){
-            TElemento temp = l_recuperar(lista, ini);
-            l_insertar(&lista, ini, l_recuperar(lista, fin));
-            l_insertar(&lista, fin, temp);
-            ini = l_siguiente(lista, ini);
-            fin = l_anterior(lista, fin);
-        }
-    }
-}
-
 void eliminar_elemento(TLista * lista, TElemento elemento) {
+    // Se procede a recorrer la lista hasta encontrar el elemento (puede no llegar a estar en la lista).
     if(lista!=NULL && elemento!=ELE_NULO){
         TPosicion ini = l_primera(*lista);
         while((ini->elemento!=elemento) && (ini->celda_siguiente!=POS_NULA)){

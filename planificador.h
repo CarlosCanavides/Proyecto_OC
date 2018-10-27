@@ -32,29 +32,29 @@ int main(int argc, char* arg[]);
 
 
 /**
-* \brief
+* \brief Muestra las ciudades de manera asecendentes.
 *
 * \param TLista ciudades, lista de ciudades
 * \param Viajante viajante
 */
-TLista mostrar_ciudades_ascendentes(TLista ciudades, Viajante viajante);
+void mostrar_ciudades_ascendentes(TLista ciudades, Viajante viajante);
 
 
 /**
-* \brief
+* \brief Muestra las ciudades de manera descendentes.
 *
 * \param TLista ciudades
 * \param Viajante viajante
 */
-TLista mostrar_ciudades_descendentes(TLista ciudades, Viajante viajante);
+void mostrar_ciudades_descendentes(TLista ciudades, Viajante viajante);
 
 
 /**
-* \brief
+* \brief Muestra las ciudades de tal forma que reduce las horas de manejo.
 *
 * \param TLista ciudades
 * \param Viajante viajante
 */
-TLista reducir_horas_manejo(TLista ciudades, Viajante viajante);
+void reducir_horas_manejo(TLista ciudades, Viajante viajante);
 
 #endif

@@ -27,6 +27,7 @@ int l_insertar(TLista * lista, TPosicion pos, TElemento elem) {
                TPosicion nueva = crear_celda();
                nueva->elemento = elem;
                nueva->celda_siguiente = pos;
+               nueva->celda_anterior = pos->celda_anterior;
                if(pos->celda_anterior==POS_NULA){ // Si la pos pasada como parámetro es la 1ra posicion de la lista.
                   *lista = nueva;
                }

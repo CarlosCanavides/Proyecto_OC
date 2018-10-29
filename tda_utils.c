@@ -2,10 +2,11 @@
 #include "tda_utils.h"
 #include "constantes.h"
 #include "planificador.h"
+#include "panel.h"
 
 void ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*pesador)(TElemento, void* optarg), void*optarg){
     if(lista == POS_NULA){
-        return POS_NULA;
+        return;
     }
     TColaCP cola = crear_cola_cp(comparador);
     TPosicion ini = l_primera(lista);
@@ -22,9 +23,9 @@ void ordenar_lista(TLista lista, int(*comparador)(TEntrada, TEntrada), void*(*pe
 
     // Una vez armada la ccp correspondiente se procede a mostrar por pantalla las ciudades con sus respectivos ordenes.
     // Además se libera el espacio de memoria reservado para cada entrada y su respectiva clave.
-    int orden = 0;
+    int orden;
     int size = cp_size(cola);
-    for(orden; orden<size; orden++) {
+    for(orden = 0; orden<size; orden++) {
         entr_temp = cp_eliminar(cola);
         elem_temp = entr_temp->valor;
         free(entr_temp->clave);

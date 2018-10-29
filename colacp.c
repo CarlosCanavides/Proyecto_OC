@@ -6,13 +6,25 @@
 #define LOG_2(a) (log10(a)/log10(2))
 
 
-// Metodos de arbol binario completo
+/**
+* \brief Intercambia las entradas de dos
+* nodos del arbol
+*/
 static void intercambiar_entradas(TNodo nodo_uno, TNodo nodo_dos){
     TEntrada temp = nodo_uno->entrada;
     nodo_uno->entrada = nodo_dos->entrada;
     nodo_dos->entrada = temp;
 }
 
+/**
+* \brief Realiza un burbujeo hacia arriba de un
+* nodo en particular.
+*
+* Los nodos en si no son desplazados,
+* solo se intercambian las entradas de los nodos.
+* Para esto se utiliza un comparador
+* que determinara si las entradas deben ser intercambiadas o no
+*/
 static void burbujeo_hacia_arriba(TNodo nodo, int(*comparador)(TEntrada a, TEntrada b)){
     if(nodo->padre != POS_NULA){
         TEntrada entradaHijo = nodo->entrada;
@@ -25,6 +37,15 @@ static void burbujeo_hacia_arriba(TNodo nodo, int(*comparador)(TEntrada a, TEntr
     }
 }
 
+/**
+* \brief Realiza un burbujeo hacia abajo de un
+* nodo en particular.
+*
+* Los nodos en si no son desplazados,
+* solo se intercambian las entradas de los nodos.
+* Para esto se utiliza un comparador
+* que determinara si las entradas deben ser intercambiadas o no
+*/
 static void burbujeo_hacia_abajo(TNodo nodo, int(*comparador)(TEntrada a, TEntrada b)){
     TNodo hijo_izquierdo = nodo->hijo_izquierdo;
     TNodo hijo_derecho = nodo->hijo_derecho;
@@ -53,6 +74,21 @@ static void burbujeo_hacia_abajo(TNodo nodo, int(*comparador)(TEntrada a, TEntra
     }
 }
 
+/**
+* \brief Retorna la referencia al TNodo ubicado en la posicion
+* indicada. Esta referencia apunta al TNodo almacenado en el padre.
+* Ademas modifica el puntero padre recibido por parametro de manera
+* que apunte al padre del TNodo deseado
+*
+* La busqueda del TNodo deseado se realiza de manera recursiva, calculando
+* la direccion en la que se debe bajar en el arbol.
+*
+* A cada nodo del arbol se le asigna un entero representando su posicion,
+* el cual crece de arriba hacia abajo y de izquierda a derecha.
+* Los enteros piso y techo indican la menor y mayor posicion del
+* nivel en el cual se encuentra la posicion deseada, a las cuales puedo
+* llegar desde el nodo referencia sobre el cual estoy ubicado.
+*/
 static TNodo* buscar_posicion_aux(TNodo ref, int posicion_deseada, int piso, int techo, TNodo* padre){
     float mitad = (float)(piso+techo) / 2;
     if(posicion_deseada < mitad){
@@ -81,6 +117,17 @@ static TNodo* buscar_posicion_aux(TNodo ref, int posicion_deseada, int piso, int
     }
 }
 
+
+/**
+* \brief Retorna la referencia al TNodo ubicado en la posicion
+* indicada. Esta referencia apunta al TNodo almacenado en el padre.
+* Ademas modifica el puntero padre recibido por parametro de manera
+* que apunte al padre del TNodo deseado
+*
+* Se utilizan funciones matematicas para encontrar el nodo deseado.
+* Esta funcion delega la busqueda a ::buscar_posicion_aux la cual de manera
+* recursiva busca el nodo en la posicion deseada.
+*/
 static TNodo* buscar_posicion(TColaCP cola, int posicion_deseada, TNodo* padre){
     if(posicion_deseada == 1){
         *padre = POS_NULA;
@@ -92,6 +139,15 @@ static TNodo* buscar_posicion(TColaCP cola, int posicion_deseada, TNodo* padre){
     return buscar_posicion_aux(cola->raiz, posicion_deseada, cant_min_nodos_en_nivel, cant_max_nodos_en_nivel, padre);
 }
 
+/**
+* \brief Crea un nuevo nodo en la proxima
+* posicion vacia del arbol, de manera tal que
+* se cumpla la propiedad de arbol binario completo.
+* Retorna el nuevo nodo
+*
+* Para hallar la proxima posicion vacia utiliza la cantidad
+* de nodos del arbol y el metodo ::buscar_posicion
+*/
 static TNodo crear_proximo_nodo_vacio(TColaCP cola){
     TNodo padre_nuevo_nodo;
     TNodo nuevo_nodo = (TNodo) malloc(sizeof(struct nodo));
@@ -147,7 +203,7 @@ int cp_insertar(TColaCP cola, TEntrada entr){
     TNodo nuevo_nodo = crear_proximo_nodo_vacio(cola);
     nuevo_nodo->entrada = entr;
     burbujeo_hacia_arriba(nuevo_nodo, cola->comparador);
-    return 1;
+    return TRUE;
 }
 
 TEntrada cp_eliminar(TColaCP cola){
@@ -193,5 +249,5 @@ int cp_destruir(TColaCP cola){
     cola->comparador = NULL;
     free(cola);
     cola = NULL;
-    return 1;
+    return TRUE;
 }

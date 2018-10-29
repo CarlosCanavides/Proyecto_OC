@@ -11,8 +11,6 @@
 
 int main(int argc, char * arg[]){
     FILE* archivo;
-    /*FILE* archivo = abrir_archivo("./Datos/viajes");*/
-    /*FILE* archivo = abrir_archivo("../../../Proyecto_OC/Datos/viajes");*/
     if(argc==2){
         archivo = abrir_archivo(arg[1]);
     }
@@ -81,7 +79,7 @@ void reducir_horas_manejo(TLista ciudades, Viajante viajante) {
             limpiar_ccp_ciudades(&cola);  // Se limpia la ccp creada en esta iteración (las entradas y sus claves).
             imprimir_ciudad(ciudad,i+1);  // Se muestra por consola la ciudad obtenida.
         }
-        printf(" Total Recorrido : %f \n",totalRecorrido);
+        printf(" Total Recorrido : %.2f \n",totalRecorrido);
         l_destruir(&lista);
     }
 }

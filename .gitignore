@@ -62,6 +62,7 @@ Mkfile.old
 dkms.conf
 
 # Doxygen
+doxygen_files/*
 *~
 .*sw?
 \#*

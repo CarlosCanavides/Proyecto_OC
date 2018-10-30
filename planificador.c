@@ -9,6 +9,18 @@
 #include "lector.h"
 #include "utils.h"
 
+/**
+* \brief Verifica que una cierta entrada es correcta,
+* ademas limpia el buffer de la consola
+*/
+static int verificar_entrada(int input){
+    if(input > 0 && input < 5 && getchar() == '\n'){
+        return TRUE;
+    }
+    scanf("%*[^\n]"); // Limpiar buffer
+    return FALSE;
+}
+
 int main(int argc, char * arg[]){
     FILE* archivo;
     if(argc==2){
@@ -25,10 +37,17 @@ int main(int argc, char * arg[]){
         mostrar_menu();
         int input = 0;
         scanf("%i", &input);
-        limpiar_buffer(); // Se limpia el buffer para detectar que no se ingresaron cosas invalidas.
-        mostrar_espaciado();
-        elegir_opcion(input, ciudades, viajante);  // Se interpreta la opción elegida.
-        mostrar_espaciado();
+        if(verificar_entrada(input)){
+            mostrar_espaciado();
+            elegir_opcion(input, ciudades, viajante);  // Se interpreta la opción elegida.
+            mostrar_espaciado();
+        }
+        else{
+            mostrar_espaciado();
+            printf("LEA LAS INSTRUCCIONES Y SELECCIONE UNA OPCION VALIDA \n");
+            mostrar_espaciado();
+        }
+
     }
 
     return 0;

@@ -16,11 +16,6 @@ void imprimir_ciudad(TCiudad ciudad, int orden);
 void mostrar_espaciado();
 
 /**
-* \brief Limpia el buffer de la consola.
-*/
-void limpiar_buffer();
-
-/**
 * \brief Muestra por consola el menu de opciones para el usuario.
 * Se asocia un numero a cada opcion mostrada por consola.
 */

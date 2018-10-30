@@ -25,6 +25,13 @@ void mostrar_espaciado(){
     printf("\n");
 }
 
+void limpiar_buffer(){
+    int c;
+    do{
+        c = getchar();
+    } while(c!='\n' && c!=EOF);
+}
+
 void elegir_opcion(int opcion, TLista ciudades, Viajante viajante){
     if(opcion==1){
        mostrar_ciudades_ascendentes(ciudades,viajante);

@@ -21,8 +21,8 @@ TLista crear_lista() {
 int l_insertar(TLista * lista, TPosicion pos, TElemento elem) {
     int resultado = FALSE;
     if(lista!=NULL){            // Si el puntero al TLista que se recibe como parámetro no es nulo.
-        resultado = TRUE;
         if(*lista!=POS_NULA) {  // Si la lista no está vacia.
+            resultado = TRUE;
             if(pos!=POS_NULA){  // Si la posición pasada como parámetro no es POS_NULA.
                TPosicion nueva = crear_celda();
                nueva->elemento = elem;
@@ -45,6 +45,7 @@ int l_insertar(TLista * lista, TPosicion pos, TElemento elem) {
             }
         }
         else {  // Si la lista está vacia, creo una nueva celda con elemento y modifico el puntero de la lista.
+            resultado = LST_VAC;
             TPosicion nueva = crear_celda();
             nueva->elemento = elem;
             *lista = nueva;
@@ -57,7 +58,7 @@ int l_insertar(TLista * lista, TPosicion pos, TElemento elem) {
 int l_eliminar(TLista * lista, TPosicion pos) {
     int resultado = FALSE;
     if(lista != NULL){  // Si el puntero al TLista que se recibe como parámetro no es nulo.
-        if(*lista!=NULL && pos!=POS_NULA) {
+        if(*lista!=NULL && pos!=POS_NULA) {  // Si la lista no está vacia y la pos no es POS_NULA.
             resultado = TRUE;
             if(pos->celda_anterior==POS_NULA && pos->celda_siguiente==POS_NULA){ // Si pos es la única posición de la lista.
                *lista = NULL;

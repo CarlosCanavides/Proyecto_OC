@@ -21,12 +21,11 @@ int main(int argc, char * arg[]){
     Viajante viajante = obtener_viajante(archivo);
     cerrar_archivo(archivo);
 
-    while(1){
+    while(TRUE){
         mostrar_menu();
-        int input;
-        do{
-            scanf("%i", &input);
-        }while(input < 1 && input > 4);
+        int input = 0;
+        scanf("%i", &input);
+        limpiar_buffer(); // Se limpia el buffer para detectar que no se ingresaron cosas invalidas.
         mostrar_espaciado();
         elegir_opcion(input, ciudades, viajante);  // Se interpreta la opción elegida.
         mostrar_espaciado();
